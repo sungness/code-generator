@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context.xsd 
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <import resource="gen-resources.xml"/>
+
+    <!-- 控制器组件包扫描，加载控制器类 -->
+    <context:component-scan base-package="com.sungness.code.generate">
+        <context:include-filter type="regex" expression="..*.service"/>
+    </context:component-scan>
+
+    <!-- enable transaction demarcation with annotations -->
+    <tx:annotation-driven proxy-target-class="true" transaction-manager="transactionManager"/>
+
+    <!-- 定义事务管理规则 -->
+    <tx:advice id="genTxAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="save*" propagation="REQUIRED"/>
+            <tx:method name="update*" propagation="REQUIRED"/>
+            <tx:method name="insert*" propagation="REQUIRED"/>
+            <tx:method name="delete*" propagation="REQUIRED"/>
+            <tx:method name="generate*" propagation="REQUIRED"/>
+            <tx:method name="get*" read-only="true"/>
+            <tx:method name="is*" read-only="true"/>
+            <tx:method name="find*" read-only="true"/>
+            <tx:method name="*"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config expose-proxy="true">
+        <aop:pointcut id="pointGen" expression="execution(* com.sungness.code.generate.service..*(..))"/>
+        <aop:advisor advice-ref="genTxAdvice" pointcut-ref="pointGen"/>
+    </aop:config>
+
+    <!-- 定义事务管理器 -->
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!-- 文件模版引擎配置 -->
+    <bean id="freemarkerConfiguration" class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean">
+        <property name="templateLoaderPath" value="classpath:template/" />
+        <property name="defaultEncoding" value="UTF-8"/>
+    </bean>
+
+    <bean id="templateLoader" class="freemarker.cache.StringTemplateLoader" />
+
+    <!-- freemaker引擎 -->
+    <bean id="freemarkEngine" class="com.sungness.core.engine.FreemarkEngine">
+        <property name="configuration" ref="freemarkerConfiguration"/>
+    </bean>
+
+    <bean id="generatorTask" class="com.sungness.code.generate.app.GeneratorTask"/>
+
+    <!-- 加载代码生成器属性文件 -->
+    <bean id="genProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="location" value="classpath:conf/gen-config.properties"/>
+        <property name="fileEncoding" value="UTF-8"/>
+    </bean>
+
+    <bean id="genConfig" class="com.sungness.code.generate.config.GenConfig">
+        <property name="properties" ref="genProperties" />
+    </bean>
+</beans>

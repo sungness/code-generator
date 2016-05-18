@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sungness.code.generate.dao.InformationSchemaColumnMapper">
+
+    <sql id="tableName">columns</sql>
+
+    <sql id="columns">
+        table_catalog, table_schema, table_name, column_name, ordinal_position,
+        column_default, is_nullable, data_type, character_maximum_length,
+        character_octet_length, numeric_precision, character_set_name,
+        collation_name, column_type, column_key, extra, column_comment
+    </sql>
+
+    <sql id="dynamicWhere">
+        <where>
+            <if test="tableSchema not in {null, ''}">table_schema = #{tableSchema}</if>
+            <if test="tableName not in {null, ''}">AND table_name = #{tableName}</if>
+        </where>
+    </sql>
+
+    <select id="getCount" resultType="int">
+        SELECT COUNT(1)
+        FROM <include refid="tableName"/>
+        <include refid="dynamicWhere"/>
+    </select>
+
+    <select id="getList" resultType="InformationSchemaColumn">
+        SELECT <include refid="columns"/>
+        FROM <include refid="tableName"/>
+        <include refid="dynamicWhere"/>
+    </select>
+</mapper>
