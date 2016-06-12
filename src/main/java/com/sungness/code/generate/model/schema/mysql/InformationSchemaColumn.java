@@ -4,6 +4,7 @@ import com.sungness.core.util.FieldNaming;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.StringTokenizer;
 
 /**
@@ -224,6 +225,8 @@ public class InformationSchemaColumn implements Serializable {
                 return "Integer";
             case "bigint":
                 return "Long";
+            case "decimal":
+                return "BigDecimal";
             case "varchar":
             default:
                 return "String";

@@ -8,8 +8,8 @@
 <%@ taglib prefix="sform" uri="http://www.sungness.com/tags/form" %>
 <s:url value="/manage/businessdata/${modulePath}${viewPath}/list" var="listURL"/>
 <s:url value="/manage/businessdata/${modulePath}${viewPath}/detail?backURL=<#noparse>${pagination.encodedCurrentPageURL}</#noparse>" var="detailURL"/>
-<s:url value="/manage/businessdata/${modulePath}${viewPath}/edit" var="editURL"/>
-<s:url value="/manage/businessdata/${modulePath}${viewPath}/delete" var="delURL"/>
+<s:url value="/manage/businessdata/${modulePath}${viewPath}/edit?backURL=<#noparse>${pagination.encodedCurrentPageURL}</#noparse>" var="editURL"/>
+<s:url value="/manage/businessdata/${modulePath}${viewPath}/delete?backURL=<#noparse>${pagination.encodedCurrentPageURL}</#noparse>" var="delURL"/>
 <#noparse>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" dir="ltr" >
@@ -27,10 +27,14 @@
 <!-- Header -->
 <%@ include file="/WEB-INF/jsp/manage/includes/header.jsp" %>
 <!-- Subheader -->
-<c:set var="showNew" value="true"/>
-<c:set var="showEdit" value="true"/>
-<c:set var="showDelete" value="true"/>
-<c:set var="showBatch" value="true"/>
+<sec:authorize access="hasPermission(#commandInfo.module, 'edit')">
+    <c:set var="showNew" value="true"/>
+    <c:set var="showEdit" value="true"/>
+    <c:set var="showBatch" value="true"/>
+</sec:authorize>
+<sec:authorize access="hasPermission(#commandInfo.module, 'delete')">
+    <c:set var="showDelete" value="true"/>
+</sec:authorize>
 <%@ include file="/WEB-INF/jsp/manage/includes/listSubHeader.jsp" %>
 <!-- container-fluid -->
 <div class="container-fluid container-main">
@@ -70,11 +74,12 @@
                                 <th width="1%" class="nowrap hidden-phone">
                                     <sg:thlink name="${table.camelCaseName}.id" order="a.id" fullOrdering="<#noparse>${fullordering}</#noparse>"/>
                                 </th>
+                                <th width="15%" class="nowrap center">操作</th>
                             </tr>
                             </thead>
                             <tfoot>
                             <tr>
-                                <c:set var="columnCount" value="${thCount}"/>
+                                <c:set var="columnCount" value="${thCount + 1}"/>
                             <#noparse>
                                 <td colspan="${columnCount}">
                                     <%@ include file="/WEB-INF/jsp/manage/includes/pagination.jsp" %>
@@ -107,6 +112,23 @@
                                 </#if>
                             </#list>
                                 <td class="hidden-phone"><#noparse>${</#noparse>${table.camelCaseName}.id<#noparse>}</#noparse></td>
+                                <td class="center nowrap">
+                                    <sec:authorize access="hasPermission(#commandInfo.module, 'detail')">
+                                        <a class="btn btn-micro active hasTooltip" href="<#noparse>${</#noparse>detailURL<#noparse>}</#noparse>&id=<#noparse>${</#noparse>${table.camelCaseName}.id<#noparse>}</#noparse>"
+                                           title="查看 <#noparse>${</#noparse>${table.camelCaseName}.id<#noparse>}</#noparse>">
+                                            <span class="icon-eye-open"></span></a>
+                                    </sec:authorize>
+                                    <sec:authorize access="hasPermission(#commandInfo.module, 'edit')">
+                                        <a class="btn btn-micro active hasTooltip" href="<#noparse>${</#noparse>editURL<#noparse>}</#noparse>&id=<#noparse>${</#noparse>${table.camelCaseName}.id<#noparse>}</#noparse>"
+                                           title="编辑 <#noparse>${</#noparse>${table.camelCaseName}.id<#noparse>}</#noparse>">
+                                            <span class="icon-edit"></span></a>
+                                    </sec:authorize>
+                                    <sec:authorize access="hasPermission(#commandInfo.module, 'delete')">
+                                        <a class="btn btn-micro active hasTooltip" id="list-delete-<#noparse>${</#noparse>${table.camelCaseName}.id<#noparse>}</#noparse>"
+                                           href="<#noparse>${</#noparse>delURL}&id=<#noparse>${</#noparse>${table.camelCaseName}.id<#noparse>}</#noparse>" title="删除 <#noparse>${</#noparse>${table.camelCaseName}.id<#noparse>}</#noparse>">
+                                            <span class="icon-trash"></span></a>
+                                    </sec:authorize>
+                                </td>
                             </tr>
                             </c:forEach>
                             </tbody>

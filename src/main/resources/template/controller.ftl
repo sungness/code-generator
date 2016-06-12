@@ -35,14 +35,11 @@ import java.util.List;
 @Module(value = ${table.upperCaseName}Controller.MODULE_NAME + "管理", order = 3)
 @Controller
 @RequestMapping(${table.upperCaseName}Controller.URL_PREFIX)
-public class ${table.upperCaseName}Controller {
+public class ${table.upperCaseName}Controller implements UrpControllerInterface {
     private static final Logger log = LoggerFactory.getLogger(${table.upperCaseName}Controller.class);
 
     public static final String MODULE_NAME = "${table.clearComment}";
     public static final String URL_PREFIX = "/manage/${viewPath}";
-    private static final String LIST_URL = "/list";
-    private static final String DETAIL_URL = "/detail";
-    private static final String EDIT_URL = "/edit";
 
     @Autowired
     private ${table.upperCaseName}Service ${table.camelCaseName}Service;
@@ -58,7 +55,7 @@ public class ${table.upperCaseName}Controller {
      * @param request HttpServletRequest
      * @throws ServletException 业务处理异常
      */
-    @Command(value = MODULE_NAME + "列表", isInlet = true)
+    @Command(value = MODULE_NAME + "列表", isInlet = true, order = 1)
     @RequestMapping(LIST_URL)
     public void list(@ModelAttribute("queryFilter") QueryFilter queryFilter,
                      BindingResult result, Model model,
@@ -92,7 +89,7 @@ public class ${table.upperCaseName}Controller {
     * @param model Model
     * @param backURL String 返回的url地址
     */
-    @Command(value = "查看" + MODULE_NAME)
+    @Command(value = "查看" + MODULE_NAME, order = 2)
     @RequestMapping(DETAIL_URL)
     public void detail(@RequestParam(required=false) Long id,
                        @RequestParam(required=false) String backURL, Model model) {
@@ -113,7 +110,7 @@ public class ${table.upperCaseName}Controller {
      * @param model Model
      * @param backURL String 返回的url地址
      */
-    @Command(value = "编辑" + MODULE_NAME, showInMenu = true, alias= "增加" + MODULE_NAME)
+    @Command(value = "编辑" + MODULE_NAME, showInMenu = true, alias= "增加" + MODULE_NAME, order = 3)
     @RequestMapping(EDIT_URL)
     public void editGet(@RequestParam(required=false) Long id,
                         @RequestParam(required=false) String backURL, Model model) {
@@ -130,7 +127,7 @@ public class ${table.upperCaseName}Controller {
      * @return CommandResult<Integer> 操作结果对象
      * @throws ServletException
      */
-    @Command("保存" + MODULE_NAME)
+    @Command("保存" + MODULE_NAME, order = 4)
     @RequestMapping(value="/save")
     public String save(${table.upperCaseName} ${table.camelCaseName}, BindingResult result,
                        @RequestParam(required=false) String task,
@@ -189,7 +186,7 @@ public class ${table.upperCaseName}Controller {
      * @param id String 记录id字符串，多个id以逗号分隔
      * @return CommandResult<Integer> 操作结果对象
      */
-    @Command("删除" + MODULE_NAME)
+    @Command("删除" + MODULE_NAME, order = 5)
     @RequestMapping("/delete")
     public String delete(@RequestParam(required=true) String id,
                          @RequestParam(required=false) String backURL,
