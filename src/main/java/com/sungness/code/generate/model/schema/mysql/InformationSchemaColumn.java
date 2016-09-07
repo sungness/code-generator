@@ -30,9 +30,9 @@ public class InformationSchemaColumn implements Serializable {
     /** 数据类型 */
     private String dataType;
     /** 字符串最大长度 */
-    private Integer characterMaximumLength;
+    private Long characterMaximumLength;
     /** 八位字节的字符长度 */
-    private Integer characterOctetLength;
+    private Long characterOctetLength;
     /** 数值精度 */
     private Integer numericPrecision;
     /** 字符集 */
@@ -119,19 +119,19 @@ public class InformationSchemaColumn implements Serializable {
         this.dataType = dataType;
     }
 
-    public Integer getCharacterMaximumLength() {
+    public Long getCharacterMaximumLength() {
         return characterMaximumLength;
     }
 
-    public void setCharacterMaximumLength(Integer characterMaximumLength) {
+    public void setCharacterMaximumLength(Long characterMaximumLength) {
         this.characterMaximumLength = characterMaximumLength;
     }
 
-    public Integer getCharacterOctetLength() {
+    public Long getCharacterOctetLength() {
         return characterOctetLength;
     }
 
-    public void setCharacterOctetLength(Integer characterOctetLength) {
+    public void setCharacterOctetLength(Long characterOctetLength) {
         this.characterOctetLength = characterOctetLength;
     }
 

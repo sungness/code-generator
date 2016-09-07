@@ -22,8 +22,8 @@ public class InformationSchemaColumnRowMapper implements RowMapper<InformationSc
         item.setColumnDefault(resultSet.getObject("column_default"));
         item.setIsNullable(resultSet.getString("is_nullable"));
         item.setDataType(resultSet.getString("data_type"));
-        item.setCharacterMaximumLength(resultSet.getInt("character_maximum_length"));
-        item.setCharacterOctetLength(resultSet.getInt("character_octet_length"));
+        item.setCharacterMaximumLength(resultSet.getLong("character_maximum_length"));
+        item.setCharacterOctetLength(resultSet.getLong("character_octet_length"));
         item.setNumericPrecision(resultSet.getInt("numeric_precision"));
         item.setCharacterSetName(resultSet.getString("character_set_name"));
         item.setCollationName(resultSet.getString("collation_name"));
