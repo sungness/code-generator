@@ -49,6 +49,7 @@ public abstract class BaseService implements GeneratorInterface {
             model.put("searchColumnName", genConfig.getSearchColumnName());
             model.put("modulePkg", genConfig.getModulePkg());
             model.put("modulePath", genConfig.getModulePath());
+            model.put("packageBase", genConfig.getPackageBase());
             generate(table, model);
         } catch (Exception e) {
             e.printStackTrace();

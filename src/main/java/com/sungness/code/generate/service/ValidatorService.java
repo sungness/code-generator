@@ -14,7 +14,7 @@ import java.util.Map;
  * Validator 层Java文件生成器实现类
  * Created by wanghongwei on 4/7/16.
  */
-@Service
+//@Service
 public class ValidatorService extends BaseService {
 
     private static final Logger log = LoggerFactory.getLogger(ValidatorService.class);

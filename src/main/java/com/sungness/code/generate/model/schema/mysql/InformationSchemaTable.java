@@ -34,6 +34,8 @@ public class InformationSchemaTable implements Serializable {
     private String camelCaseName;
     /** 表名转换后的驼峰式名称（首字母大写） */
     private String upperCaseName;
+    /** 表名转换后的小写带减号名称 */
+    private String lowerCaseSubName;
 
 
     private List<InformationSchemaColumn> columns;
@@ -62,6 +64,7 @@ public class InformationSchemaTable implements Serializable {
         this.tableName = tableName;
         this.camelCaseName = FieldNaming.toCamelCase(tableName);
         this.upperCaseName = FieldNaming.upperCaseFirstLetter(this.camelCaseName);
+        this.lowerCaseSubName = tableName.replace('_', '-');
     }
 
     public String getTableType() {
@@ -133,5 +136,9 @@ public class InformationSchemaTable implements Serializable {
 
     public String getUpperCaseName() {
         return upperCaseName;
+    }
+
+    public String getLowerCaseSubName() {
+        return lowerCaseSubName;
     }
 }

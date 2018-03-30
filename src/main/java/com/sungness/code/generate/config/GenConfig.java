@@ -120,8 +120,16 @@ public class GenConfig {
         return properties.getProperty("path.view");
     }
 
+    public String getAngularPath() {
+        return properties.getProperty("path.angular");
+    }
+
     public String buildJspFileName(String fileName) {
         return getBasePath() + getJspPath() + getViewPath() + "/" + fileName;
+    }
+
+    public String buildAngularFile(String fileName) {
+        return getAngularPath() + getViewPath() + "/" + fileName;
     }
 
     public String getDbName() {
@@ -134,5 +142,9 @@ public class GenConfig {
 
     public String getSearchColumnName() {
         return properties.getProperty("searchColumnName");
+    }
+
+    public String getPackageBase() {
+        return properties.getProperty("package.base");
     }
 }
