@@ -124,12 +124,20 @@ public class GenConfig {
         return properties.getProperty("path.angular");
     }
 
+    public String getJsonI18n() {
+        return properties.getProperty("path.angular.i18n");
+    }
+
     public String buildJspFileName(String fileName) {
         return getBasePath() + getJspPath() + getViewPath() + "/" + fileName;
     }
 
     public String buildAngularFile(String fileName) {
         return getAngularPath() + getViewPath() + "/" + fileName;
+    }
+
+    public String buildJsonI18nFile(String fileName, String local) {
+        return getAngularPath() + getJsonI18n() + "/" + local + "/" + fileName;
     }
 
     public String getDbName() {

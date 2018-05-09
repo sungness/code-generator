@@ -17,7 +17,7 @@
             <div class="item">
                 <div>
                     <h4 class="text-heading">${column.clearComment}</h4>
-                    <span class="detail">{{${table.camelCaseName}.${column.camelCaseName}}</span>
+                    <span class="detail">{{${table.camelCaseName}.${column.camelCaseName}}}</span>
                 </div>
             </div>
         </#list>
