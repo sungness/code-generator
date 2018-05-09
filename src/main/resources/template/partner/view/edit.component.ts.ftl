@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {${table.upperCaseName}Service} from './${table.lowerCaseSubName}.service';
 
 @Component({
@@ -14,6 +14,7 @@ export class ${table.upperCaseName}EditComponent implements OnInit, OnDestroy {
     submitting: boolean = false;
 
     constructor(private ${table.camelCaseName}Service: ${table.upperCaseName}Service,
+                protected router: Router,
                 private route: ActivatedRoute) {
     }
 
@@ -36,7 +37,8 @@ export class ${table.upperCaseName}EditComponent implements OnInit, OnDestroy {
             this.${table.camelCaseName}Service.update(this.${table.camelCaseName}).subscribe(res => this.submitting = false);
         } else {
             this.${table.camelCaseName}Service.create(this.${table.camelCaseName}).subscribe((response) => {
-              this.submitting = false;
+                this.router.navigate(['../detail', {id: response.body.id}],
+                                    {relativeTo: this.route}).then(() => {});
             })
         }
 

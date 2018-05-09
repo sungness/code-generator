@@ -19,7 +19,7 @@ import {AbstractManageComponent} from '../../abstract-manage.component';
 export class ${table.upperCaseName}Component extends AbstractManageComponent {
 
     manageConfig = {
-        endPoint : '/api/${viewPath}',
+        endPoint : '/api${viewPath}',
         columns : {
         <#list columnList as column>
             ${column.camelCaseName}: {
@@ -52,5 +52,7 @@ export class ${table.upperCaseName}Component extends AbstractManageComponent {
         });
     }
 
-
+    getSearchField(){
+        return '${searchColumnName}';
+    }
 }

@@ -1,4 +1,4 @@
-package com.sungness.partner.component.controller${modulePkg};
+package ${packageBase}.controller${modulePkg};
 
 import com.sungness.core.service.Pagination;
 import com.sungness.core.service.ServiceProcessException;
@@ -39,7 +39,7 @@ public class ${table.upperCaseName}Controller implements PartnerControllerInterf
     private static final Logger log = LoggerFactory.getLogger(${table.upperCaseName}Controller.class);
 
     public static final String MODULE_NAME = "${table.clearComment}";
-    public static final String URL_PREFIX = "/manage/${viewPath}";
+    public static final String URL_PREFIX = "/api${viewPath}";
 
     @Autowired
     private ${table.upperCaseName}Service ${table.camelCaseName}Service;
@@ -83,7 +83,7 @@ public class ${table.upperCaseName}Controller implements PartnerControllerInterf
         int res = ${table.camelCaseName}Service.update(${table.camelCaseName});
 
         return ResponseUtil.wrapOrNotFound(res,
-            HeaderUtil.createAlert("${table.camelCaseName}.updated", ${table.camelCaseName}.getUsername()));
+            HeaderUtil.createEntityUpdateAlert(${table.camelCaseName}.getId().toString()));
     }
 
     /**
@@ -105,8 +105,8 @@ public class ${table.upperCaseName}Controller implements PartnerControllerInterf
         //    throw new LoginAlreadyUsedException();
         } else {
             Integer res = ${table.camelCaseName}Service.insert(${table.camelCaseName});
-            return ResponseEntity.created(new URI(URL_PREFIX + "users/detail?id=" + ${table.camelCaseName}.getId()))
-            .headers(HeaderUtil.createAlert( "${table.camelCaseName}.created", ${table.camelCaseName}.getUsername()))
+            return ResponseEntity.created(new URI(URL_PREFIX + "${table.lowerCaseSubName}/detail?id=" + ${table.camelCaseName}.getId()))
+            .headers(HeaderUtil.createEntityCreationAlert(${table.camelCaseName}.getId().toString()))
             .body(${table.camelCaseName});
         }
     }
@@ -133,7 +133,7 @@ public class ${table.upperCaseName}Controller implements PartnerControllerInterf
     @RequestMapping(value = DELETE_URL, method = RequestMethod.DELETE)
     public ResponseEntity<Void> delete(@RequestParam String ids) throws ServiceProcessException {
         ${table.camelCaseName}Service.batchDelete(LongTools.parseList(ids));
-        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert( "${table.camelCaseName}", ids)).build();
+        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ids)).build();
     }
 
 

@@ -45,6 +45,7 @@ public abstract class BaseService implements GeneratorInterface {
             model.put("genDate",genDate);
             model.put("table", table);
             model.put("columnList",columnList);
+            model.put("viewBasePath", genConfig.getBasePath());
             model.put("viewPath", genConfig.getViewPath());
             model.put("searchColumnName", genConfig.getSearchColumnName());
             model.put("modulePkg", genConfig.getModulePkg());

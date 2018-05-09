@@ -53,7 +53,8 @@ public class GenConfig {
     }
 
     public String buildControllerFileName(String fileName) {
-        return getBasePath() + getControllerPath() + fileName;
+        return getBasePath() + getControllerPath() +
+                (StringUtils.isNotBlank(getModuleName()) ? getModuleName() + "/" : "") + fileName;
     }
 
     public String getDaoJavaPath() {
@@ -120,6 +121,10 @@ public class GenConfig {
         return properties.getProperty("path.view");
     }
 
+    public String getViewBasePath() {
+        return properties.getProperty("path.view.base");
+    }
+
     public String getAngularPath() {
         return properties.getProperty("path.angular");
     }
@@ -133,7 +138,7 @@ public class GenConfig {
     }
 
     public String buildAngularFile(String fileName) {
-        return getAngularPath() + getViewPath() + "/" + fileName;
+        return getAngularPath() + getViewBasePath() + getViewPath() + "/" + fileName;
     }
 
     public String buildJsonI18nFile(String fileName, String local) {

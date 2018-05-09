@@ -1,6 +1,6 @@
 <nb-card>
   <nb-card-header>
-    {{ ${table.camelCaseName}.${searchColumnName} != null ? ${table.camelCaseName}.${searchColumnName} : '' }}
+    {{ ${table.camelCaseName} && ${table.camelCaseName}.${searchColumnName} != null ? ${table.camelCaseName}.${searchColumnName} : '' }}
     {{ ${table.camelCaseName} && ${table.camelCaseName}.id ? '编辑' : '新增'}}
   </nb-card-header>
 
@@ -35,7 +35,7 @@
                 ngxTranslate="entity.action.save"></button>
         <button class="btn btn-hero-primary"
                 ngxTranslate="entity.action.back"
-                routerLink="/pages/${viewPath}">返回
+                routerLink="/pages${viewPath}">返回
         </button>
       </form>
 

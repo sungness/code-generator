@@ -44,6 +44,9 @@ public class AngularComponentService extends BaseService {
 
         generate("routing.ts.ftl", "-routing.ts", table, model);
 
+        String FileName = genConfig.buildAngularFile(table.getLowerCaseSubName() + ".component.scss");
+        FileTools.writeStringToFile(FileName, "");
+
         log.debug("End generate Angular view File.");
     }
 

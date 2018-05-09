@@ -7,7 +7,7 @@
     <div class="row form-group">
       <div class="col-md-1" *ngIf="settings.actions.add">
         <button class="btn btn-outline-success btn-icon"
-                routerLink="/pages/${viewPath}/new">
+                routerLink="/pages${viewPath}/new">
           <i class="nb-plus"></i>
         </button>
       </div>
