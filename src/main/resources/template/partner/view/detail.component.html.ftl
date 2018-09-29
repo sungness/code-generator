@@ -3,17 +3,15 @@
     ${table.clearComment} 详细信息
     </nb-card-header>
 
-    <nb-card-body>
-        <div *ngIf="${table.camelCaseName}" class="items">
+    <nb-card-body class="p-0">
+        <ul *ngIf="${table.camelCaseName}" class="detail-list">
         <#list columnList as column>
-            <div class="item">
-                <div>
-                    <h4 class="text-heading">{{'${table.camelCaseName}.${column.camelCaseName}' | translate}}</h4>
-                    <span class="detail">{{${table.camelCaseName}.${column.camelCaseName}}}</span>
-                </div>
-            </div>
+          <li>
+            <div class="field">{{'${table.camelCaseName}.${column.camelCaseName}' | translate}}</div>
+            <div class="value">{{${table.camelCaseName}.${column.camelCaseName}}}</div>
+          </li>
         </#list>
-        </div>
+        </ul>
     </nb-card-body>
     <nb-card-footer>
         <button class="btn btn-hero-primary" routerLink="/pages${viewPath}">返回</button>
