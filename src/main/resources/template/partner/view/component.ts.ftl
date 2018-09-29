@@ -23,7 +23,7 @@ export class ${table.upperCaseName}Component extends AbstractManageComponent {
         columns : {
         <#list columnList as column>
             ${column.camelCaseName}: {
-                title: '${column.clearComment()}',
+                title: '${column.clearComment}',
                 type: 'string'
             },
         </#list>
