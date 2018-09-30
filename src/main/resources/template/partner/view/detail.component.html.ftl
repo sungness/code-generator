@@ -7,7 +7,7 @@
         <ul *ngIf="${table.camelCaseName}" class="detail-list">
         <#list columnList as column>
           <li>
-            <div class="field">{{'${table.camelCaseName}.${column.camelCaseName}' | translate}}</div>
+            <div class="field" ngxTranslate="${table.camelCaseName}.${column.camelCaseName}">${column.clearComment}</div>
             <div class="value">{{${table.camelCaseName}.${column.camelCaseName}}}</div>
           </li>
         </#list>

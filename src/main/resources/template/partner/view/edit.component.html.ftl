@@ -13,7 +13,7 @@
         <#list columnList as column>
             <#if column.columnName != "id">
         <div class="form-group">
-          <label for="${column.camelCaseName}">${column.camelCaseName}</label>
+          <label for="${column.camelCaseName}" ngxTranslate="${table.camelCaseName}.${column.camelCaseName}">${column.clearComment}</label>
           <input type="text" class="form-control" placeholder="${column.camelCaseName}"
                  [(ngModel)]="${table.camelCaseName}.${column.camelCaseName}"
                  name="${column.camelCaseName}"
@@ -31,12 +31,12 @@
         </div>
             </#if>
         </#list>
-        <button type="submit" class="btn btn-danger" [disabled]="editForm.form.invalid || submitting"
-                ngxTranslate="entity.action.save"></button>
-        <button class="btn btn-hero-primary"
+        <button type="submit" class="btn btn-danger with-margins"
+                [disabled]="editForm.form.invalid || submitting"
+                ngxTranslate="entity.action.save">保存</button>
+        <button class="btn btn-hero-primary with-margins"
                 ngxTranslate="entity.action.back"
-                routerLink="/pages${viewPath}">返回
-        </button>
+                routerLink="/pages${viewPath}">返回</button>
       </form>
 
     </div>
