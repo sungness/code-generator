@@ -19,7 +19,7 @@
                  name="${column.camelCaseName}"
                  #${column.camelCaseName}Input="ngModel"
                  [class.form-control-danger]="${column.camelCaseName}Input.invalid && ${column.camelCaseName}Input.touched"
-                 autofocus required="required"
+                 <#if column_index == 1>autofocus </#if>required="required"
                  id="${column.camelCaseName}"/>
           <div *ngIf="${column.camelCaseName}Input.touched && ${column.camelCaseName}Input.invalid">
             <small class="form-text error"
