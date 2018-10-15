@@ -7,14 +7,13 @@ import {CustomDatepickerI18n} from '../../../@theme/components/datepicker/datepi
 import {Principal} from '../../../@core/auth/principal.service';
 import {StateStorageService} from '../../../@core/auth/state-storage.service';
 import {${table.upperCaseName}Service} from './${table.lowerCaseSubName}.service';
-import {AbstractManageComponent} from '../../abstract-manage.component';
+import {AbstractManageComponent} from '../../../shared/manage/abstract-manage.component';
 
 
 @Component({
     selector: 'ngx-${table.lowerCaseSubName}',
     templateUrl: './${table.lowerCaseSubName}.component.html',
-    styleUrls: ['./${table.lowerCaseSubName}.component.scss'],
-//    providers: [{provide: NgbDatepickerI18n, useClass: CustomDatepickerI18n}]
+    styleUrls: ['./${table.lowerCaseSubName}.component.scss']
 })
 export class ${table.upperCaseName}Component extends AbstractManageComponent {
 
@@ -23,7 +22,7 @@ export class ${table.upperCaseName}Component extends AbstractManageComponent {
         columns : {
         <#list columnList as column>
             ${column.camelCaseName}: {
-                title: '${column.clearComment}',
+                title: this.translateService.instant('${table.camelCaseName}.${column.camelCaseName}'),
                 type: 'string'
             },
         </#list>
@@ -37,7 +36,7 @@ export class ${table.upperCaseName}Component extends AbstractManageComponent {
                 protected router: Router,
                 private ${table.camelCaseName}Service: ${table.upperCaseName}Service,
                 protected stateStorageService: StateStorageService) {
-        super(route, router, stateStorageService);
+        super(${table.camelCaseName}Service, route, router, stateStorageService);
         this.settings.columns = this.manageConfig.columns;
         this.sourceConf.endPoint = this.manageConfig.endPoint;
         principal.hasPermissionForCURD(this.sourceConf.endPoint, this.settings);
@@ -45,14 +44,7 @@ export class ${table.upperCaseName}Component extends AbstractManageComponent {
         this.initPageConf();
     }
 
-
-    delete(ids) {
-        this.${table.camelCaseName}Service.delete(ids).subscribe((res) => {
-            this.source.refresh();
-        });
-    }
-
-    getSearchField(){
+    getSearchField() {
         return '${searchColumnName}';
     }
 }

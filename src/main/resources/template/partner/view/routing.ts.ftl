@@ -7,13 +7,13 @@ export const ${table.camelCaseName}Routes: Routes = [
     {
         path: '${table.lowerCaseSubName}',
         component: ${table.upperCaseName}Component,
-    },{
+    }, {
         path: '${table.lowerCaseSubName}/detail',
         component: ${table.upperCaseName}DetailComponent
-    },{
+    }, {
         path: '${table.lowerCaseSubName}/new',
         component: ${table.upperCaseName}EditComponent
-    },{
+    }, {
         path: '${table.lowerCaseSubName}/edit',
         component: ${table.upperCaseName}EditComponent
     }

@@ -31,7 +31,7 @@
         </div>
             </#if>
         </#list>
-        <button type="submit" class="btn btn-danger with-margins"
+        <button type="submit" class="btn btn-hero-danger with-margins"
                 [disabled]="editForm.form.invalid || submitting"
                 ngxTranslate="entity.action.save">保存</button>
         <button class="btn btn-hero-primary with-margins"

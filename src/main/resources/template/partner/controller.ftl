@@ -5,14 +5,14 @@ import com.sungness.core.service.ServiceProcessException;
 import com.sungness.core.util.tools.LongTools;
 import com.sungness.framework.web.support.annotation.Command;
 import com.sungness.framework.web.support.annotation.Module;
-import com.sungness.partner.component.controller.PartnerControllerInterface;
-import com.sungness.partner.component.controller.errors.BadRequestAlertException;
-import com.sungness.partner.component.util.ResponseUtil;
+import com.sungness.manage.component.controller.ManageControllerInterface;
 import ${packageBase}.model${modulePkg}.${table.upperCaseName};
-import com.sungness.partner.demo.service${modulePkg}.${table.upperCaseName}Service;
-import com.sungness.partner.support.query.Query;
-import com.sungness.partner.support.util.HeaderUtil;
-import com.sungness.partner.support.util.PaginationUtil;
+import com.sungness.manage.component.service${modulePkg}.${table.upperCaseName}Service;
+import com.sungness.manage.ngx.component.controller.errors.BadRequestAlertException;
+import com.sungness.manage.ngx.support.query.Query;
+import com.sungness.manage.ngx.support.util.HeaderUtil;
+import com.sungness.manage.ngx.support.util.PaginationUtil;
+import com.sungness.manage.ngx.support.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +35,7 @@ import java.util.Optional;
 @Module(value = ${table.upperCaseName}Controller.MODULE_NAME, order = 3)
 @RestController
 @RequestMapping(${table.upperCaseName}Controller.URL_PREFIX)
-public class ${table.upperCaseName}Controller implements PartnerControllerInterface {
+public class ${table.upperCaseName}Controller implements ManageControllerInterface {
     private static final Logger log = LoggerFactory.getLogger(${table.upperCaseName}Controller.class);
 
     public static final String MODULE_NAME = "${table.clearComment}";

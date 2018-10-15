@@ -5,21 +5,17 @@
 
   <nb-card-body>
     <div class="row form-group">
-      <div class="col-md-1" *ngIf="settings.actions.add">
-        <button class="btn btn-outline-success btn-icon"
-                routerLink="/pages${viewPath}/new">
-          <i class="nb-plus"></i>
-        </button>
+      <div class="col-12 col-sm-6 col-md-6" *ngIf="settings.actions.add">
+        <div class="row col-12">
+          <button class="btn btn-outline-success btn-icon with-margins"
+                  routerLink="/pages${viewPath}/new">
+            <i class="nb-plus"></i>
+          </button>
+          <button class="btn btn-outline-danger btn-icon with-margins"
+                  (click)="onDeleteForSelect()"><i class="nb-trash"></i></button>
+        </div>
       </div>
-      <!--<div class="col-md-1" *ngIf="settings.actions.edit">-->
-        <!--<button class="btn btn-outline-primary btn-icon"><i class="nb-edit"></i>-->
-        <!--</button>-->
-      <!--</div>-->
-      <div class="col-md-1" *ngIf="settings.actions.delete">
-        <button class="btn btn-outline-danger btn-icon"
-                (click)="onDeleteForSelect()"><i class="nb-trash"></i></button>
-      </div>
-      <div class="col-md-4 offset-md-6">
+      <div class="col-md-6 col-sm-6">
         <div class="input-group">
           <input #search class="form-control " type="text"
                  placeholder="Search..." (keyup)="onSearch(search.value)">
