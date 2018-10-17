@@ -1,3 +1,4 @@
+<form name="editForm" role="form" (ngSubmit)="save()" #editForm="ngForm">
 <nb-card>
   <nb-card-header>
     {{ ${table.camelCaseName} && ${table.camelCaseName}.${searchColumnName} != null ? ${table.camelCaseName}.${searchColumnName} : '' }}
@@ -6,7 +7,6 @@
 
   <nb-card-body>
     <div *ngIf="${table.camelCaseName}" class="form-group">
-      <form name="editForm" role="form" (ngSubmit)="save()" #editForm="ngForm">
 
         <ngx-alert></ngx-alert>
         <ngx-alert-error></ngx-alert-error>
@@ -31,17 +31,15 @@
         </div>
             </#if>
         </#list>
-        <button type="submit" class="btn btn-hero-danger with-margins"
-                [disabled]="editForm.form.invalid || submitting"
-                ngxTranslate="entity.action.save">保存</button>
-        <button class="btn btn-hero-primary with-margins"
-                ngxTranslate="entity.action.back"
-                routerLink="/pages${viewPath}">返回</button>
-      </form>
-
     </div>
   </nb-card-body>
   <nb-card-footer>
-
+    <button type="submit" class="btn btn-hero-danger mr-2"
+            [disabled]="editForm.form.invalid || submitting"
+            ngxTranslate="entity.action.save">保存</button>
+    <button class="btn btn-hero-primary"
+            ngxTranslate="entity.action.back"
+            routerLink="/pages${viewPath}">返回</button>
   </nb-card-footer>
 </nb-card>
+</form>
