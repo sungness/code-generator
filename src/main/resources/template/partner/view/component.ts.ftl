@@ -44,7 +44,4 @@ export class ${table.upperCaseName}Component extends AbstractManageComponent {
         this.initPageConf();
     }
 
-    getSearchField() {
-        return '${searchColumnName}';
-    }
 }

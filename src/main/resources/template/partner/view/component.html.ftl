@@ -18,7 +18,7 @@
       <div class="col-md-6 col-sm-6">
         <div class="input-group">
           <input #search class="form-control " type="text"
-                 placeholder="Search..." (keyup)="onSearch(search.value)">
+                 placeholder="按字段${searchColumnName}搜索..." (keyup)="onSearch(search.value, '${searchColumnName}')">
         </div>
       </div>
     </div>
