@@ -35,7 +35,8 @@ export class ${table.upperCaseName}Component extends AbstractManageComponent {
                 protected route: ActivatedRoute,
                 protected router: Router,
                 private ${table.camelCaseName}Service: ${table.upperCaseName}Service,
-                protected stateStorageService: StateStorageService) {
+                protected stateStorageService: StateStorageService,
+                private translateService: TranslateService) {
         super(${table.camelCaseName}Service, route, router, stateStorageService);
         this.settings.columns = this.manageConfig.columns;
         this.sourceConf.endPoint = this.manageConfig.endPoint;

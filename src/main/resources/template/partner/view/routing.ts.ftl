@@ -6,20 +6,28 @@ import {${table.upperCaseName}EditComponent} from './${table.lowerCaseSubName}-e
 export const ${table.camelCaseName}Routes: Routes = [
     {
         path: '${table.lowerCaseSubName}',
-        component: ${table.upperCaseName}Component,
-    }, {
-        path: '${table.lowerCaseSubName}/detail',
-        component: ${table.upperCaseName}DetailComponent
-    }, {
-        path: '${table.lowerCaseSubName}/new',
-        component: ${table.upperCaseName}EditComponent
-    }, {
-        path: '${table.lowerCaseSubName}/edit',
-        component: ${table.upperCaseName}EditComponent
-    }
+        component: ${table.upperCaseName}InletComponent,
+        children: [
+            {
+                path: '',
+                component: ${table.upperCaseName}Component,
+            }, {
+                path: 'detail',
+                component: ${table.upperCaseName}DetailComponent
+            }, {
+                path: 'new',
+                component: ${table.upperCaseName}EditComponent
+            }, {
+                path: 'edit',
+                component: ${table.upperCaseName}EditComponent
+            }
+        ]
+    },
+
 ];
 
 export const routed${table.upperCaseName}Components = [
+    ${table.upperCaseName}InletComponent,
     ${table.upperCaseName}Component,
     ${table.upperCaseName}DetailComponent,
     ${table.upperCaseName}EditComponent,
