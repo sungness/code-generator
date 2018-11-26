@@ -8,7 +8,7 @@ import {Principal} from '../../../@core/auth/principal.service';
 import {StateStorageService} from '../../../@core/auth/state-storage.service';
 import {${table.upperCaseName}Service} from './${table.lowerCaseSubName}.service';
 import {AbstractManageComponent} from '../../../shared/manage/abstract-manage.component';
-
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
     selector: 'ngx-${table.lowerCaseSubName}',

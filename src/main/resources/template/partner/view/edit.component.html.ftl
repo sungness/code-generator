@@ -14,7 +14,7 @@
             <#if column.columnName != "id">
         <div class="form-group">
           <label for="${column.camelCaseName}" ngxTranslate="${table.camelCaseName}.${column.camelCaseName}">${column.clearComment}</label>
-          <input type="text" class="form-control" placeholder="${column.camelCaseName}"
+          <input type="text" class="form-control" placeholder="请输入{{'${table.camelCaseName}.${column.camelCaseName}'| translate}}"
                  [(ngModel)]="${table.camelCaseName}.${column.camelCaseName}"
                  name="${column.camelCaseName}"
                  #${column.camelCaseName}Input="ngModel"
