@@ -1,21 +1,19 @@
 <nb-card>
-  <nb-card-header>
-    ${table.clearComment}
+  <nb-card-header class="title-tools">
+    <div>${table.clearComment}</div>
+    <div class="tools-btn-group">
+      <button *ngIf="settings.actions.add"  class="btn btn-outline-success btn-icon with-margins"
+              routerLink="/pages${viewPath}/new">
+        <i class="nb-plus"></i>
+      </button>
+      <button *ngIf="settings.actions.delete"  class="btn btn-outline-danger btn-icon with-margins"
+              (click)="onDeleteForSelect()"><i class="nb-trash"></i></button>
+    </div>
   </nb-card-header>
 
   <nb-card-body>
-    <div class="row form-group">
-      <div class="col-12 col-sm-6 col-md-6" *ngIf="settings.actions.add">
-        <div class="row col-12">
-          <button class="btn btn-outline-success btn-icon with-margins"
-                  routerLink="/pages${viewPath}/new">
-            <i class="nb-plus"></i>
-          </button>
-          <button class="btn btn-outline-danger btn-icon with-margins"
-                  (click)="onDeleteForSelect()"><i class="nb-trash"></i></button>
-        </div>
-      </div>
-      <div class="col-md-6 col-sm-6">
+    <div class="row filter-group">
+      <div class="col-md-4 col-sm-4">
         <div class="input-group">
           <input #search class="form-control " type="text"
                  placeholder="按字段${searchColumnName}搜索..." (keyup)="onSearch(search.value, '${searchColumnName}')">
