@@ -16,7 +16,7 @@
       <div class="col-md-4 col-sm-4">
         <div class="input-group">
           <input #search class="form-control " type="text"
-                 placeholder="按字段${searchColumnName}搜索..." (keyup)="onSearch(search.value, '${searchColumnName}')">
+                 placeholder="按字段{{ '${table.camelCaseName}.${searchColumnName}' | translate }}搜索..." (keyup)="onSearch(search.value, '${searchColumnName}')">
         </div>
       </div>
     </div>
@@ -48,15 +48,3 @@
     </div>
   </nb-card-footer>
 </nb-card>
-
-
-<!--<div class="input-group ">-->
-<!--<input class="form-control" placeholder="yyyy-mm-dd"-->
-<!--name="dp" [(ngModel)]="dateStruct" ngbDatepicker #d="ngbDatepicker">-->
-
-<!--<span class="input-group-append">-->
-<!--<button class="btn btn-outline-secondary btn-icon " (click)="d.toggle()" type="button">-->
-<!--<i class="ion-ios-calendar-outline"></i>-->
-<!--</button>-->
-<!--</span>-->
-<!--</div>-->
