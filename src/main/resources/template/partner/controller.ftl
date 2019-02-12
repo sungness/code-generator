@@ -65,21 +65,13 @@ public class ${table.upperCaseName}Controller implements ManageControllerInterfa
     /**
     * PUT /edit : Updates an existing ${table.upperCaseName}.
     *
-    * @param ${table.camelCaseName} the user to update
-    * @return the ResponseEntity with status 200 (OK) and with body the updated user
+    * @param ${table.camelCaseName} the ${table.upperCaseName} to update
+    * @return the ResponseEntity with status 200 (OK) and with body the updated ${table.upperCaseName}
     */
     @Command(MODULE_NAME + " edit")
     @RequestMapping(value = EDIT_URL, method = RequestMethod.PUT)
     public ResponseEntity<Integer> update(@Valid @RequestBody ${table.upperCaseName} ${table.camelCaseName})
              throws ServiceProcessException {
-        log.debug("REST request to update User : {}", ${table.camelCaseName});
-        // ${table.upperCaseName} existing${table.upperCaseName} =
-        //        ${table.camelCaseName}Service.getByUsername(${table.camelCaseName}.getUsername());
-
-        // if (existing${table.upperCaseName} != null &&
-        //      (!existing${table.upperCaseName}.getUsername().equals(${table.camelCaseName}.getUsername()))) {
-        //     throw new LoginAlreadyUsedException();
-        // }
         int res = ${table.camelCaseName}Service.update(${table.camelCaseName});
 
         return ResponseUtil.wrapOrNotFound(res,
@@ -100,9 +92,7 @@ public class ${table.upperCaseName}Controller implements ManageControllerInterfa
         throws ServiceProcessException, URISyntaxException {
         if (${table.camelCaseName}.getId() != null) {
             throw new BadRequestAlertException("A new user cannot already have an ID", "${table.camelCaseName}", "idexists");
-            // Lowercase the user login before comparing with database
-        // } else if (${table.camelCaseName}Service.getByUsername(${table.camelCaseName}.getUsername()) != null) {
-        //    throw new LoginAlreadyUsedException();
+            // Lowercase the${table.upperCaseName} before comparing with database
         } else {
             Integer res = ${table.camelCaseName}Service.insert(${table.camelCaseName});
             return ResponseEntity.created(new URI(URL_PREFIX + "${table.lowerCaseSubName}/detail?id=" + ${table.camelCaseName}.getId()))
@@ -126,7 +116,7 @@ public class ${table.upperCaseName}Controller implements ManageControllerInterfa
     /**
     * DELETE /delete?ids={ids} : delete id in the "ids" ${table.upperCaseName}.
     *
-    * @param ids id in the ids of the user to delete
+    * @param ids id in the ids of the ${table.upperCaseName} to delete
     * @return the ResponseEntity with status 200 (OK)
     */
     @Command(MODULE_NAME + " delete")

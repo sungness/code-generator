@@ -2,6 +2,7 @@ import {Routes} from '@angular/router';
 import {${table.upperCaseName}Component} from './${table.lowerCaseSubName}.component';
 import {${table.upperCaseName}DetailComponent} from './${table.lowerCaseSubName}-detail.component';
 import {${table.upperCaseName}EditComponent} from './${table.lowerCaseSubName}-edit.component';
+import {${table.upperCaseName}InletComponent} from './${table.lowerCaseSubName}-inlet.component';
 
 export const ${table.camelCaseName}Routes: Routes = [
     {

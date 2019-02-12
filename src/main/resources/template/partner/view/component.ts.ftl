@@ -2,8 +2,6 @@ import {Component} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ServerDataSource} from '../../../@theme/ng2-smart-table';
 import {ActivatedRoute, Router} from '@angular/router';
-import {NgbDatepickerI18n} from '@ng-bootstrap/ng-bootstrap';
-import {CustomDatepickerI18n} from '../../../@theme/components/datepicker/datepicker-i18n';
 import {Principal} from '../../../@core/auth/principal.service';
 import {StateStorageService} from '../../../@core/auth/state-storage.service';
 import {${table.upperCaseName}Service} from './${table.lowerCaseSubName}.service';
