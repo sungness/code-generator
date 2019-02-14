@@ -46,10 +46,10 @@
     </div>
   </nb-card-body>
   <nb-card-footer>
-    <button type="submit" class="btn btn-hero-danger mr-2"
+    <button type="submit" class="btn btn-danger mr-2"
             [disabled]="editForm.form.invalid || submitting"
             ngxTranslate="entity.action.save">保存</button>
-    <button class="btn btn-hero-primary"
+    <button class="btn btn-primary"
             ngxTranslate="entity.action.back"
             routerLink="/pages${viewPath}">返回</button>
   </nb-card-footer>

@@ -14,6 +14,6 @@
         </ul>
     </nb-card-body>
     <nb-card-footer>
-        <button class="btn btn-hero-primary" routerLink="/pages${viewPath}">返回</button>
+        <button class="btn btn-primary" routerLink="/pages${viewPath}">返回</button>
     </nb-card-footer>
 </nb-card>
