@@ -15,8 +15,9 @@
     <div class="row filter-group">
       <div class="col-md-4 col-sm-4">
         <div class="input-group">
-          <input #search class="form-control " type="text"
-                 placeholder="按字段{{ '${table.camelCaseName}.${searchColumnName}' | translate }}搜索..." (keyup)="onSearch(search.value, '${searchColumnName}')">
+          <input class="form-control " type="text"
+                 [(ngModel)]="queryFilter['${searchColumnName}']"
+                 placeholder="按字段{{ '${table.camelCaseName}.${searchColumnName}' | translate }}搜索..." (keyup)="onSearch(queryFilter['${searchColumnName}'], '${searchColumnName}')">
         </div>
       </div>
     </div>
