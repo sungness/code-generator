@@ -34,7 +34,7 @@
         (userRowSelect)="onSelect($event)">
     </ng2-smart-table>
   </nb-card-body>
-  <nb-card-footer class="p-0">
+  <nb-card-footer class="page-warp">
     <div class="dropdown ghost-dropdown" ngbDropdown>
       <button class="btn btn-primary" type="button" ngbDropdownToggle
               ngxTranslate="global.item-count"
