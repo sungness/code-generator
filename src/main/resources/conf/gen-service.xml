@@ -52,7 +52,7 @@
 
     <!-- 文件模版引擎配置 -->
     <bean id="freemarkerConfiguration" class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean">
-        <property name="templateLoaderPath" value="classpath:template/" />
+        <property name="templateLoaderPath" value="classpath:template_ad/" />
         <property name="defaultEncoding" value="UTF-8"/>
     </bean>
 
@@ -67,7 +67,7 @@
 
     <!-- 加载代码生成器属性文件 -->
     <bean id="genProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
-        <property name="location" value="classpath:conf/gen-config.properties"/>
+        <property name="location" value="classpath:conf/gen-config-ad-user-handler.properties"/>
         <property name="fileEncoding" value="UTF-8"/>
     </bean>
 

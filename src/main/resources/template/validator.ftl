@@ -1,6 +1,6 @@
-package com.msymobile.urp.validator${modulePkg};
+package com.sungness.projectName.validator${modulePkg};
 
-import com.msymobile.urp.model${modulePkg}.${table.upperCaseName};
+import com.sungness.projectName.model${modulePkg}.${table.upperCaseName};
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;

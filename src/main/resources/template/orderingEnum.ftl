@@ -1,4 +1,4 @@
-package com.msymobile.urp.model.enu.options${modulePkg};
+package com.sungness.projectName.model.enu.options${modulePkg};
 
 import org.apache.commons.lang3.StringUtils;
 

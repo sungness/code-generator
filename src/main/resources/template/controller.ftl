@@ -1,17 +1,18 @@
-package com.msymobile.urp.web.manage.business;
+package com.sungness.projectname.web.manage.business;
 
-import com.msymobile.core.manage.annotation.Command;
-import com.msymobile.core.manage.annotation.Module;
-import com.msymobile.core.model.CommandResult;
-import com.msymobile.core.model.enu.TaskEnum;
-import com.msymobile.core.service.ServiceProcessException;
-import com.msymobile.core.util.tools.LongTools;
-import com.msymobile.core.web.query.QueryFilter;
-import com.msymobile.urp.model${modulePkg}.${table.upperCaseName};
-import com.msymobile.urp.model.enu.options.ListLimitEnum;
-import com.msymobile.urp.model.enu.options${modulePkg}.${table.upperCaseName}OrderingEnum;
-import com.msymobile.urp.service${modulePkg}.${table.upperCaseName}Service;
-import com.msymobile.urp.validator${modulePkg}.${table.upperCaseName}Validator;
+import com.sungness.core.web.manage.annotation.Command;
+import com.sungness.core.web.manage.annotation.Module;
+import com.sungness.core.web.CommandResult;
+import com.sungness.core.service.ServiceProcessException;
+import com.sungness.core.util.tools.LongTools;
+import com.sungness.core.web.query.QueryFilter;
+import com.sungness.projectname.model${modulePkg}.${table.upperCaseName};
+import com.sungness.projectname.model.enu.TaskEnum;
+import com.sungness.projectname.model.enu.options.ListLimitEnum;
+import com.sungness.projectname.model.enu.options${modulePkg}.${table.upperCaseName}OrderingEnum;
+import com.sungness.projectname.service${modulePkg}.${table.upperCaseName}Service;
+import com.sungness.projectname.validator${modulePkg}.${table.upperCaseName}Validator;
+import com.sungness.projectname.web.ProjectnameControllerInterface;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,7 +36,7 @@ import java.util.List;
 @Module(value = ${table.upperCaseName}Controller.MODULE_NAME + "管理", order = 3)
 @Controller
 @RequestMapping(${table.upperCaseName}Controller.URL_PREFIX)
-public class ${table.upperCaseName}Controller implements UrpControllerInterface {
+public class ${table.upperCaseName}Controller implements ProjectnameControllerInterface {
     private static final Logger log = LoggerFactory.getLogger(${table.upperCaseName}Controller.class);
 
     public static final String MODULE_NAME = "${table.clearComment}";
@@ -127,7 +128,7 @@ public class ${table.upperCaseName}Controller implements UrpControllerInterface 
      * @return CommandResult<Integer> 操作结果对象
      * @throws ServletException
      */
-    @Command("保存" + MODULE_NAME, order = 4)
+    @Command(value = "保存" + MODULE_NAME, order = 4)
     @RequestMapping(value="/save")
     public String save(${table.upperCaseName} ${table.camelCaseName}, BindingResult result,
                        @RequestParam(required=false) String task,
@@ -186,7 +187,7 @@ public class ${table.upperCaseName}Controller implements UrpControllerInterface 
      * @param id String 记录id字符串，多个id以逗号分隔
      * @return CommandResult<Integer> 操作结果对象
      */
-    @Command("删除" + MODULE_NAME, order = 5)
+    @Command(value = "删除" + MODULE_NAME, order = 5)
     @RequestMapping("/delete")
     public String delete(@RequestParam(required=true) String id,
                          @RequestParam(required=false) String backURL,

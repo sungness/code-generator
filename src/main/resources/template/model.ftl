@@ -1,4 +1,4 @@
-package com.msymobile.urp.model${modulePkg};
+package com.sungness.projectName.model${modulePkg};
 
 import java.io.Serializable;
 

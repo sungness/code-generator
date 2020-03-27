@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 </#noparse>
 <#assign newLine = "\r\n        ">
-<mapper namespace="com.msymobile.urp.dao${modulePkg}.${table.upperCaseName}Mapper">
+<mapper namespace="com.sungness.projectName.dao${modulePkg}.${table.upperCaseName}Mapper">
 
     <sql id="tableName">${table.tableName}</sql>
 

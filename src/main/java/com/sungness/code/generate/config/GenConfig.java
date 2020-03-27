@@ -48,12 +48,16 @@ public class GenConfig {
         }
     }
 
+    public String getPackageBase() {
+        return properties.getProperty("package.base");
+    }
+
     public String getControllerPath() {
         return properties.getProperty("path.controller");
     }
 
     public String buildControllerFileName(String fileName) {
-        return getBasePath() + getControllerPath() + fileName;
+        return getBasePath() + getControllerPath() + getModulePath() + fileName;
     }
 
     public String getDaoJavaPath() {
@@ -61,7 +65,7 @@ public class GenConfig {
     }
 
     public String buildDaoJavaFileName(String fileName) {
-        return getBasePath() + getDaoJavaPath() +  getModulePath() + fileName;
+        return getBasePath() + getDaoJavaPath() + getModulePath() + fileName;
     }
 
     public String getDaoXmlPath() {
@@ -69,7 +73,7 @@ public class GenConfig {
     }
 
     public String buildDaoXmlFileName(String fileName) {
-        return getBasePath() + getDaoXmlPath() +  getModulePath() + fileName;
+        return getBasePath() + getDaoXmlPath() + getModulePath() + fileName;
     }
 
     public String getMessagePath() {
@@ -77,7 +81,7 @@ public class GenConfig {
     }
 
     public String buildMessageFileName(String fileName) {
-        return getBasePath() + getMessagePath() +  getModulePath() + fileName;
+        return getBasePath() + getMessagePath() + getModulePath() + fileName;
     }
 
     public String getModelPath() {
@@ -85,7 +89,7 @@ public class GenConfig {
     }
 
     public String buildModelFileName(String fileName) {
-        return getBasePath() + getModelPath() +  getModulePath() + fileName;
+        return getBasePath() + getModelPath() + getModulePath() + fileName;
     }
 
     public String getOrderingPath() {
@@ -93,7 +97,7 @@ public class GenConfig {
     }
 
     public String buildOrderingFileName(String fileName) {
-        return getBasePath() + getOrderingPath() +  getModulePath() + fileName;
+        return getBasePath() + getOrderingPath() + getModulePath() + "options/" + fileName;
     }
 
     public String getServicePath() {
@@ -101,7 +105,7 @@ public class GenConfig {
     }
 
     public String buildServiceFileName(String fileName) {
-        return getBasePath() + getServicePath() +  getModulePath() + fileName;
+        return getBasePath() + getServicePath() + getModulePath() + fileName;
     }
 
     public String getValidatorPath() {

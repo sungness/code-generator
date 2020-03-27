@@ -1,7 +1,7 @@
-package com.msymobile.urp.dao${modulePkg};
+package com.sungness.projectName.dao${modulePkg};
 
-import com.msymobile.core.dao.LongPKBaseMapper;
-import com.msymobile.urp.model${modulePkg}.${table.upperCaseName};
+import com.sungness.core.dao.LongPKBaseMapper;
+import com.sungness.projectName.model${modulePkg}.${table.upperCaseName};
 
 /**
 * ${table.clearComment} MyBatis 映射接口类

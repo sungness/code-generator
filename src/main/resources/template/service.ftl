@@ -1,9 +1,9 @@
-package com.msymobile.urp.service${modulePkg};
+package com.sungness.projectName.service${modulePkg};
 
-import com.msymobile.core.dao.GenericMapper;
-import com.msymobile.core.service.LongPKBaseService;
-import com.msymobile.urp.dao${modulePkg}.${table.upperCaseName}Mapper;
-import com.msymobile.urp.model${modulePkg}.${table.upperCaseName};
+import com.sungness.core.dao.GenericMapper;
+import com.sungness.core.service.LongPKBaseService;
+import com.sungness.projectName.dao${modulePkg}.${table.upperCaseName}Mapper;
+import com.sungness.projectName.model${modulePkg}.${table.upperCaseName};
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
